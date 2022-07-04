@@ -1,39 +1,52 @@
-//Vehicle Purchase
-console.log('Vehicle Purchase');
+// @ts-check
+//
+// The line above enables type checking for this file. Various IDEs interpret
+// the @ts-check directive. It will give you helpful autocompletion when
+// implementing this exercise.
 
-const vehicle = 'truck';
-const vehicle1 = 'Tesla Model Y';
-const vehicle2 = 'Mercedes GLE Coupe';
-const vehicleAge = 3;
-const vehiclePriceWhenWasNew = 50000;
-
-// Determine if you will need a drivers licence
-const needLicense = (kind) => {
-    return (kind === 'car' || kind === 'truck') ? true: false
-}
-
-const youNeedLicense = needLicense(vehicle);
-console.log(`Do you need license for ${vehicle}? ${youNeedLicense}`);
-
-// Choose between two potential vehicles to buy
-const chooseVehicle = (vehicle1, vehicle2) => {
-    return `${vehicle1} is clearly the better choice.`;
-}
-
-const chosenVehicle = chooseVehicle(vehicle1, vehicle2);
-console.log(chosenVehicle);
-
-// Calculate an estimation for the price of a used vehicle
-const calculateResellPrice = (vehicleAge, vehiclePriceWhenWasNew) => {
-    if (vehicleAge < 3) {
-        price =  80/100 * vehiclePriceWhenWasNew;
-    } else if (vehicleAge > 10) {
-        price =   50/100 * vehiclePriceWhenWasNew;
-    } else if (vehicleAge >= 3 && vehicleAge < 10) {
-        price =   70/100 * vehiclePriceWhenWasNew;
+/**
+ * Determines whether or not you need a licence to operate a certain kind of vehicle.
+ *
+ * @param {string} kind
+ * @returns {boolean} whether a license is required
+ */
+ export function needsLicense(kind) {
+    if (kind === 'truck' || kind === 'car') {
+      return true;
     }
-    return price;
-}
-
-const vehicleValue = calculateResellPrice(vehicleAge, vehiclePriceWhenWasNew);
-console.log(`Price of the vehlcie is: ${vehicleValue}`);
+    return  false;
+  }
+  
+  /**
+   * Helps choosing between two options by recommending the one that
+   * comes first in dictionary order.
+   *
+   * @param {string} option1
+   * @param {string} option2
+   * @returns {string} a sentence of advice which option to choose
+   */
+  export function chooseVehicle(option1, option2) {
+    if (option1 > option2) {
+      return option2 + ' is clearly the better choice.'
+    } 
+    return option1 + ' is clearly the better choice.'
+  }
+  
+  /**
+   * Calculates an estimate for the price of a used vehicle in the dealership
+   * based on the original price and the age of the vehicle.
+   *
+   * @param {number} originalPrice
+   * @param {number} age
+   * @returns expected resell price in the dealership
+   */
+  export function calculateResellPrice(originalPrice, age) {
+      if (age < 3) {
+         return 80/100 * originalPrice;
+      } else if (age > 10) {
+         return  50/100 * originalPrice;
+      } else if (age >= 3 && age <= 10) {
+         return 70/100 * originalPrice;
+      }
+  }
+  
